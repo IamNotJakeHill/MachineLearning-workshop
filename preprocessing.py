@@ -1,5 +1,5 @@
 import numpy as np
-import github
+#  import github
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -26,20 +26,9 @@ for i in df_train.columns:
     print(df_train[i].value_counts())
     print('*'*50)
     # pokaż liczności danych kategorycznych
-sns.countplot(df_train['Credit_Score'])
+
 #zastąp błędne dane
 
-df_train.info()
-#zmień dane na numeryczne
-FeaturesToConvert = ['Age', 'Annual_Income',
-'Num_of_Loan', 'Num_of_Delayed_Payment',
-'Changed_Credit_Limit', 'Outstanding_Debt',
-'Amount_invested_monthly', 'Monthly_Balance']
-
-# ale najpierw sprawdź czy nie ma błędów w danych
-for feature in FeaturesToConvert:
-    uniques = df_train[feature].unique()
-    print('Feature:', '\n', feature, '\n', uniques, '\n', '--'*40, '\n')
 
 df_train.info()
 #zmień dane na numeryczne
@@ -53,6 +42,7 @@ for feature in FeaturesToConvert:
     print('Feature:', '\n', feature, '\n', uniques, '\n', '--'*40, '\n')
     # usuń zbędne znaki '-’ , '_'
     for feature in FeaturesToConvert:
+        df_train[feature]=str(df_train[feature])
         df_train[feature] = df_train[feature].str.strip('-_');
         # puste kolumny zastąp NAN
     for feature in FeaturesToConvert:
